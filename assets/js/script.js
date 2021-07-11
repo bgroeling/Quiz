@@ -11,6 +11,12 @@
     var True
     var False
 
+    // Modals
+
+        // Quiz Modal
+        var QuizModal = document.getElementById("Quiz-Modal");
+        var StartButton = document.getElementById("Start-Button");
+
     // Questions
     var questionList = [
         {question:"What is spidermans name?",
@@ -78,3 +84,10 @@
             ]
         },  
     ]
+
+// Functions
+
+    // Open Quiz Modal When Start Button is Clicked
+    StartButton.onclick = function() {
+        QuizModal.style.display = "block";
+    }
