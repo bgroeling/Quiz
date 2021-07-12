@@ -1,157 +1,135 @@
-// CONSTANTS
+// Constants
+const startButton = document.getElementById('start-btn')
+const scoreButton = document.getElementById('End')
+const nextButton = document.getElementById('next-btn')
+const questionContainerElement = document.getElementById('question-container')
+    // End Window
 
-    // Start button in html = Start button in javascript
-    const startButton = document.getElementById('StartButton');
-    const nextButton = document.getElementById('next-btn')
-    const questionContainerElement = document.getElementById('Quiz');
-    const questionElement = document.getElementById('Question');
-    const answerButtonsElement = document.getElementById('answers')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
 
-    let shuffledQuestions, currentQuestionIndex;
+let shuffledQuestions, currentQuestionIndex
 
-// PRESSING THE START BUTTON-BEGIN QUIZ
-    startButton.addEventListener('click', startGame)
-    nextButton.addEventListener('click', () => {
-    currentQuestionIndex++
-    setNextQuestion()
+startButton.addEventListener('click', startGame,)
+nextButton.addEventListener('click', () => {
+  currentQuestionIndex++
+  setNextQuestion()
 })
 
-// FUNCTIONS
-
-    // The start page Disappears and the first question is randomly selected.
-    function startQuiz() {
-        console.log('Quiz Started');
-        // removing the start screen from view
-        shuffleQuestions = QuestionList.sort(() => Math.random() -.5);
-        currentQuestionIndex = 0
-        setNextQuestion();
+function startGame() {
+  startButton.classList.add('hide')
+  shuffledQuestions = questions.sort(() => Math.random() - .5)
+  currentQuestionIndex = 0
+  questionContainerElement.classList.remove('hide')
+  setNextQuestion()
 }
-    function setNextQuestion() {
-        resetState()
-        showQuestion(shuffledQuestions[currentQuestionIndex]);
+
+function setNextQuestion() {
+  resetState()
+  showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
+function showQuestion(question) {
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct) {
+      button.dataset.correct = answer.correct
     }
-    function showQuestion(Question) {
-        questionElement.innerText = QuestionList.Question;
-        Question.answers.forEach(answer => {
-            const button = document.createElement('button')
-            button.innerText = answer.innerText
-            button.classList.add('Question-Answers')
-                if(answer.correct) {
-                    button.dataset.correct = answer.correct
-                }
-                button.addEventListener('click',selectAnswer)
-                answerButtonsElement.appendChild(button)
-        })
-    }
+    button.addEventListener('click', selectAnswer)
+    answerButtonsElement.appendChild(button)
+  })
+}
 
-    function resetState() {
-        clearStatusClass(document.body)
-        nextButton.classList.add('hide')
-        while (answerButtonsElement.firstChild) {
-          answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-        }
-      }
-    
-      function selectAnswer(e) {
-        const selectedButton = e.target
-        const correct = selectedButton.dataset.correct
-        setStatusClass(document.body, correct)
-        Array.from(answerButtonsElement.children).forEach(button => {
-          setStatusClass(button, button.dataset.correct)
-        })
-        if (shuffledQuestions.length > currentQuestionIndex + 1) {
-          nextButton.classList.remove('hide')
-        } else {
-          startButton.innerText = 'Restart'
-          startButton.classList.remove('hide')
-        }
-      }
-      
-      function setStatusClass(element, correct) {
-        clearStatusClass(element)
-        if (correct) {
-          element.classList.add('True')
-        } else {
-          element.classList.add('False')
-        }
-      }
-      
-      function clearStatusClass(element) {
-        element.classList.remove('True')
-        element.classList.remove('False')
-      }
+function resetState() {
+  clearStatusClass(document.body)
+  nextButton.classList.add('hide')
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+  }
+}
 
-   
+function selectAnswer(e) {
+  const selectedButton = e.target
+  const correct = selectedButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+  })
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove('hide')
+  } else {
+    // type in score
+  }
+}
 
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add('correct')
+  } else {
+    element.classList.add('wrong')
+  }
+}
 
+function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('wrong')
+}
 
-// LIST OF QUESTIONS
-    const QuestionList = [
-        {Question:"What is spidermans name?",
-            answers: [
-            {answer: "Peter Parker",
-            isCorrect: True
-            },
-            {answer: "batman",
-            isCorrect: False
-            },
-            {answer: "bruce banner",
-            isCorrect: False
-            },
-            {answer: "dog",
-            isCorrect: False
-            }
-            ]
-        },
-        {Question:"What color is the sky?",
-            answers: [
-            {answer: "blue",
-            isCorrect: True
-            },
-            {answer: "red",
-            isCorrect: False
-            },
-            {answer: "green",
-            isCorrect: False
-            },
-            {answer: "black",
-            isCorrect: False
-            }
-            ]
-        },
-        {Question:"Which animal is a common house pet?",
-            answers: [
-            {answer: "Dog",
-            isCorrect: True
-            },
-            {answer: "Giraffe",
-            isCorrect: False
-            },
-            {answer: "Whale",
-            isCorrect: False
-            },
-            {answer: "Big Bird",
-            isCorrect: False
-            }
-            ]
-        },
-        {Question:"Which item is food?",
-        answers: [
-            {answer: "Spaghetti",
-            isCorrect: True
-            },
-            {answer: "Nails",
-            isCorrect: False
-            },
-            {answer: "Purple",
-            isCorrect: False
-            },
-            {answer: "black",
-            isCorrect: False
-            }
-            ]
-    },  
+const questions = [
+  {
+    question: 'What color is the sky?',
+    answers: [
+      { text: 'blue', correct: true },
+      { text: 'red', correct: false },
+      { text: 'green', correct: false },
+      { text: 'purple', correct: false },
+    ]
+  },
+  {
+    question: 'Which is a U.S. state?',
+    answers: [
+      { text: 'England', correct: false },
+      { text: 'New Mexico', correct: true },
+      { text: 'Mexico', correct: false },
+      { text: 'Germany', correct: false },
+    ]
+  },
+  {
+    question: 'Which of the following is a pasta?',
+    answers: [
+      { text: 'Gatorade', correct: false },
+      { text: 'Spaghetti', correct: true },
+      { text: 'Water', correct: false },
+      { text: 'Milk', correct: false },
+    ]
+  },
+  {
+    question: 'Which is an animal?',
+    answers: [
+      { text: 'Duck', correct: true },
+      { text: 'Rock', correct: false },
+      { text: 'Pear', correct: false },
+      { text: 'Bubble', correct: false },
+    ]
+  }
 ]
+document.addEventListener('DOMContentLoaded', ()=> {
+    const timeLeftDisplay = document.querySelector('#time-left');
+    const StartBtn = document.querySelector('#start-btn')
+    timeLeft = 300
 
-
-
+    function countDown(){
+        setInterval(function(){
+            if(timeLeft <= 0 ) {
+                clearInterval(timeLeft = 0)
+            }
+            timeLeftDisplay.innerHTML = timeLeft
+            timeLeft -=1
+        }, 1000 )
+    }
+    StartBtn.addEventListener('click', countDown)
+});
