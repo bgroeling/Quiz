@@ -7,8 +7,12 @@
     --hue-neutral: 200;
     --hue-wrong: 0;
     --hue-correct: 145;
+  } 
+
+  header {
+      align-items: center;
+      justify-content: center;
   }
-  
   body {
     --hue: var(--hue-neutral);
     padding: 0;
@@ -21,12 +25,12 @@
     background-color: hsl(var(--hue), 100%, 20%);
   }
   
-  body.True {
-    --hue: var(--hue-True);
+  body.correct {
+    --hue: var(--hue-correct);
   }
   
-  body.False {
-    --hue: var(--hue-False);
+  body.wrong {
+    --hue: var(--hue-wrong);
   }
   
   .container {
@@ -38,14 +42,14 @@
     box-shadow: 0 0 10px 2px;
   }
   
-  .Question-Answers-grid {
+  .btn-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
   }
   
-  .Question-Answers {
+  .btn {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
     background-color: hsl(var(--hue), 100%, 50%);
@@ -55,20 +59,20 @@
     outline: none;
   }
   
-  .Question-Answers:hover {
+  .btn:hover {
     border-color: black;
   }
   
-  .Question-Answers.True {
-    --hue: var(--hue-True);
+  .btn.correct {
+    --hue: var(--hue-correct);
     color: black;
   }
   
-  .Question-Answers.False {
-    --hue: var(--hue-False);
+  .btn.wrong {
+    --hue: var(--hue-wrong);
   }
   
-  .StartButton, .next-btn {
+  .start-btn, .next-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
