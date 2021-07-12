@@ -11,15 +11,6 @@
 </head>
 <!-- Main Content for Webpage -->
 <body>
-    <!-- Start Screen -->
-    <div class="Start-Screen" id="Start">
-
-        <h3 class="Start-Screen-Title" id="StartScreenTitle">Quiz</h3>
-        <p>Press the start button to begin the quiz!</p>
-        <button class="Button" id="StartButton">Start</button>
-
-    </div>
-
     <!-- Quiz -->
     <div class="modal" id="QuizModal">
         <div class="Questions" id="Quiz">
@@ -33,26 +24,9 @@
         </div>
     </div>
 
-    <!-- True Screen -->
-    <div class="modal">
-        <div class="TrueScreen" id="TrueScreen">
-
-            <h3 class="True-Title">Correct!</h3>
-            <p>+25 Points</p>
-            <button class="Button" id="ContinueTrue">Next Question</button>
-           
-        </div>
-    </div>
-
-    <!-- False Screen -->
-    <div class="modal">
-        <div class="FalseScreen" id="FalseScreen">
-
-            <h3 class="False-Title">Incorrect</h3>
-            <p>-25 Seconds</p>
-            <button class="Button" id="ContinueFalse">Next Question</button>
-           
-        </div>
+    <div class="controls">
+        <button class="Button" id="StartButton">Start</button>
+        <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
 
     <!-- End Screen -->
