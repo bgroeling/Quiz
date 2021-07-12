@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Webpage Title -->
-    <title>Quiz</title>
-    <!-- Reference Sheets for Styling -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="./assets/css/styles.css" rel="stylesheet">
+  <script defer src="./assets/js/script.js"></script>
+  <title>Quiz App</title>
 </head>
-<!-- Main Content for Webpage -->
 <body>
-    <!-- Quiz -->
-    <div class="modal" id="QuizModal">
-        <div class="Questions" id="Quiz">
+  <div class="container">
+      <!--  -->
+    <header>
+        <h3>Time<span id="time-left"></span></h3>
+    </header>
 
-            <h3 class="QuestionTitle" id="QuestionTitle">Question</h3>
-            <button class="Question-Answers" id="Answer1">Answer 1</button>
-            <button class="Question-Answers" id="Answer2">Answer 2</button>
-            <button class="Question-Answers" id="Answer3">Answer 3</button>
-            <button class="Question-Answers" id="Answer4">Answer 4</button>
-
-        </div>
-    </div>
-
+    <!-- Start screen and Next Button -->
     <div class="controls">
-        <button class="Button" id="StartButton">Start</button>
+        <button id="start-btn" class="start-btn btn">Start</button>
         <button id="next-btn" class="next-btn btn hide">Next</button>
+      </div>
+    <div id="question-container" class="hide">
+
+        <!-- Question -->
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+
+        <!-- answer buttons -->
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
+
+      </div>
+
+    <!-- End -->
+    <div class="End">
+        
     </div>
 
-    <!-- End Screen -->
-    <div class="modal">
-        <div class="EndScreen" id="EndScreen">
-
-            <form>
-                <h3 class="EndScreenTitle" id="EndScreenTitle">Enter Name</h3>
-                <input type="text">
-                <br>
-                <button class="Button" id="SubmitButton">Submit</button>
-            </form>
-
-        </div>
     </div>
-
-
-
-    <!-- Reference sheet for Javascript -->
-    <script src="./assets/js/script.js"></script>
+  </div>
 </body>
 </html>
